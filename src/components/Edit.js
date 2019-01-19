@@ -68,7 +68,7 @@ class Edit extends Component {
           <div class="panel-heading">
             <br/>
             <h3 class="panel-title">
-              Alterar
+              Alterar (RF)
             </h3>
           </div>
           <div class="panel-body">

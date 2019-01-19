@@ -6,34 +6,13 @@ class Show extends Component {
 
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('servicos');
-    this.unsubscribe = null;
     this.state = {
       board: {},
-      key: '',
-      servicos: []
+      key: ''
     };
   }
 
-  onCollectionUpdate = (querySnapshot) => {
-    const servicos = [];
-    querySnapshot.forEach((doc) => {
-      const { title, description, price } = doc.data();
-      servicos.push({
-        key: doc.id,
-        doc, // DocumentSnapshot
-        title,
-        description,
-        price,
-      });
-    });
-    this.setState({
-      servicos
-   });
-  }
-
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
     const ref = firebase.firestore().collection('servicos').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {

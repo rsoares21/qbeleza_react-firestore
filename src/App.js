@@ -41,7 +41,7 @@ class App extends Component {
           <div class="panel-heading">
             <br/>
             <h3 class="panel-title">
-              Serviços de Beleza
+              Serviços de Beleza (RF)
             </h3>
           </div>
           <div class="panel-body">

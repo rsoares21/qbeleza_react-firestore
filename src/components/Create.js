@@ -50,7 +50,7 @@ class Create extends Component {
           <div class="panel-heading">
             <br/>
             <h3 class="panel-title">
-              Novo serviço de Beleza
+              Novo serviço de Beleza (RF)
             </h3>
           </div>
           <div class="panel-body">
