@@ -8,9 +8,9 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
-      title: '',
-      description: '',
-      price: ''
+      nome: '',
+      descricao: '',
+      origemiid: ''
     };
   }
 
@@ -21,9 +21,9 @@ class Edit extends Component {
         const board = doc.data();
         this.setState({
           key: doc.id,
-          title: board.title,
-          description: board.description,
-          price: board.price
+          nome: board.title,
+          descricao: board.description,
+          origemiid: board.price
         });
       } else {
         console.log("No such document!");
@@ -40,21 +40,22 @@ class Edit extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, description, price } = this.state;
+    const { nome, descricao, origemid } = this.state;
 
     const updateRef = firebase.firestore().collection('surveys').doc(this.state.key);
     updateRef.set({
-      title,
-      description,
-      price
+      nome,
+      descricao,
+      origemid
     }).then((docRef) => {
       this.setState({
         key: '',
-        title: '',
-        description: '',
-        price: ''
+        nome: '',
+        descricao: '',
+        origemid: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+      //this.props.history.push("/show/"+this.props.match.params.id)
+      this.props.history.push("/")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -68,7 +69,7 @@ class Edit extends Component {
           <div class="panel-heading">
             <br/>
             <h3 class="panel-title">
-              Alterar (RF)
+              Votar (RF)
             </h3>
           </div>
           <div class="panel-body">
@@ -76,15 +77,15 @@ class Edit extends Component {
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="Nome" />
+                <input type="text" class="form-control" name="title" value={this.state.nome} onChange={this.onChange} placeholder="Nome" />
               </div>
               <div class="form-group">
                 <label for="description">Description:</label>
-                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Descrição detalhada" />
+                <input type="text" class="form-control" name="description" value={this.state.descricao} onChange={this.onChange} placeholder="Descrição detalhada" />
               </div>
               <div class="form-group">
                 <label for="price">Preço:</label>
-                <input type="text" class="form-control" name="price" value={this.state.price} onChange={this.onChange} placeholder="Preço" />
+                <input type="text" class="form-control" name="price" value={this.state.origemid} onChange={this.onChange} placeholder="Preço" />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

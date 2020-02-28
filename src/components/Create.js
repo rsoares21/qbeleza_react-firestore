@@ -7,11 +7,12 @@ class Create extends Component {
 
   constructor() {
     super();
-    this.ref = firebase.firestore().collection('servicos');
+    this.ref = firebase.firestore().collection('surveys');
     this.state = {
-      title: '',
-      description: '',
-      price: ''
+      nome: '',
+      descricao: '',
+      ordem: '',
+      participantes: [{ nome: 'Bianca', votos: 1 },{ nome: 'Felipe', votos: 2 }, { nome: 'Flyslane', votos: 1 }]
     };
   }
   onChange = (e) => {
@@ -23,32 +24,34 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, description, price } = this.state;
+    const { nome, descricao, ordem, participantes } = this.state;
 
     this.ref.add({
-      title,
-      description,
-      price
+      nome,
+      descricao,
+      ordem,
+      participantes
     }).then((docRef) => {
       this.setState({
-        title: '',
-        description: '',
-        price: ''
+        nome: '',
+        descricao: '',
+        ordem: '',
+        participantes:[]
       });
       this.props.history.push("/")
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   render() {
-    const { title, description, price } = this.state;
+    const { nome, descricao, ordem } = this.state;
     return (
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <br/>
+            <br />
             <h3 class="panel-title">
               Novo serviço de Beleza (RF)
             </h3>
@@ -57,16 +60,16 @@ class Create extends Component {
             <h4><Link to="/" class="btn btn-info">Voltar</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="title">Nome do serviço:</label>
-                <input type="text" class="form-control" name="title" value={title} onChange={this.onChange} placeholder="Nome" />
+                <label for="nome">Nome do serviço:</label>
+                <input type="text" class="form-control" name="nome" value={nome} onChange={this.onChange} placeholder="Nome" />
               </div>
               <div class="form-group">
-                <label for="description">Descrição :</label>
-                <textArea class="form-control" name="description" onChange={this.onChange} placeholder="Descrição detalhada" cols="80" rows="3">{description}</textArea>
+                <label for="descricao">Descrição :</label>
+                <textArea class="form-control" name="descricao" onChange={this.onChange} placeholder="Descrição detalhada" cols="80" rows="3">{descricao}</textArea>
               </div>
               <div class="form-group">
-                <label for="price">Preço:</label>
-                <input type="text" class="form-control" name="price" value={price} onChange={this.onChange} placeholder="Preço" />
+                <label for="ordem">Preço:</label>
+                <input type="text" class="form-control" name="ordem" value={ordem} onChange={this.onChange} placeholder="Preço" />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

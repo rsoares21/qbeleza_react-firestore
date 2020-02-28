@@ -6,27 +6,27 @@ import firebase from './Firebase';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('servicos');
+    this.ref = firebase.firestore().collection('surveys');
     this.unsubscribe = null;
     this.state = {
-      servicos: []
+      surveys: []
     };
   }
 
   onCollectionUpdate = (querySnapshot) => {
-    const servicos = [];
+    const surveys = [];
     querySnapshot.forEach((doc) => {
-      const { title, description, price } = doc.data();
-      servicos.push({
+      const { nome, descricao, ordem } = doc.data();
+      surveys.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        title,
-        description,
-        price,
+        nome,
+        descricao,
+        ordem,
       });
     });
     this.setState({
-      servicos
+      surveys
    });
   }
 
@@ -41,26 +41,26 @@ class App extends Component {
           <div class="panel-heading">
             <br/>
             <h3 class="panel-title">
-              Serviços de Beleza (RF)
+              Votações Abertas
             </h3>
           </div>
           <div class="panel-body">
 
-            <Link to="/create" class="btn btn-success">Incluir novo serviço de beleza</Link><br/><br/>
+            <Link to="/create" class="btn btn-success">Incluir NOVA votação (ADM)</Link><br/><br/>
             <table class="table table-stripe">
               <thead>
                 <tr>
                   <th>Nome</th>
-                  <th>Descrição detalhada do serviço</th>
-                  <th>Preço</th>
+                  <th>Descrição</th>
+                  <th>Ordem</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.servicos.map(board =>
+                {this.state.surveys.map(board =>
                   <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.title}</Link></td>
-                    <td>{board.description}</td>
-                    <td>R$ {board.price}</td>
+                    <td><Link to={`/show/${board.key}`}>{board.nome}</Link></td>
+                    <td>{board.descricao}</td>
+                    <td><Link to={`/vote/${board.key}`} class="btn btn-success">Participar</Link><br/><br/></td>
                   </tr>
                 )}
               </tbody>

@@ -13,7 +13,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('servicos').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('surveys').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
@@ -28,7 +28,7 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('servicos').doc(id).delete().then(() => {
+    firebase.firestore().collection('surveys').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
       this.props.history.push("/")
     }).catch((error) => {
