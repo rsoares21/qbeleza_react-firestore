@@ -6,11 +6,13 @@ import firebase from './Firebase';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('surveys');
+    this.ref = firebase.firestore().collection('enquetes').orderBy('ordem', 'asc');
+
     this.unsubscribe = null;
     this.state = {
       surveys: []
     };
+
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -27,27 +29,48 @@ class App extends Component {
     });
     this.setState({
       surveys
-   });
+    });
   }
 
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
 
+
+
   render() {
+    const mainDivStyle = {
+      //border: '5px solid',
+      //width: '955px',
+      //height: '368px'
+    };
+
     return (
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <br/>
+            <br />
             <h3 class="panel-title">
-              Votações Abertas
+              ENQUETE POP <br></br><br></br>
             </h3>
           </div>
           <div class="panel-body">
 
-            <Link to="/create" class="btn btn-success">Incluir NOVA votação (ADM)</Link><br/><br/>
-            <table class="table table-stripe">
+            <div style={mainDivStyle}>
+
+              <table>
+                <tr>
+                  <td rowspan="2"><img src={require('./components/images/capa_bbb20.jfif')} width="600" height="400" /></td>
+                  <td><img src={require('./components/images/capa_feriascomoex.jfif')} width="500" height="200" /></td>
+                </tr>
+                <tr>
+                  <td><img src={require('./components/images/capa_casadosartistas.jfif')} width="500" height="200" /></td>
+                </tr>
+              </table>
+
+            </div>
+
+            <table class="table table-stripe" border="5">
               <thead>
                 <tr>
                   <th>Nome</th>
@@ -60,12 +83,33 @@ class App extends Component {
                   <tr>
                     <td><Link to={`/show/${board.key}`}>{board.nome}</Link></td>
                     <td>{board.descricao}</td>
-                    <td><Link to={`/vote/${board.key}`} class="btn btn-success">Participar</Link><br/><br/></td>
+                    <td><Link to={`/vote/${board.key}`} class="btn btn-success">Participar</Link><br /><br /></td>
                   </tr>
                 )}
               </tbody>
             </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
+
         </div>
       </div>
     );
