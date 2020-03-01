@@ -81,7 +81,7 @@ class App extends Component {
               <tbody>
                 {this.state.surveys.map(board =>
                   <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.nome}</Link></td>
+                    <td><Link to={`/home/${board.key}`}>{board.nome}</Link></td>
                     <td>{board.descricao}</td>
                     <td><Link to={`/vote/${board.key}`} class="btn btn-success">Participar</Link><br /><br /></td>
                   </tr>

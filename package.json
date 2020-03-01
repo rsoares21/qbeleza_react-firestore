@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "@mojs/core": "^0.288.2",
+    "bulma": "^0.8.0",
     "firebase": "^7.9.1",
     "mdbreact": "^4.25.2",
     "mojs": "^0.2.0",
+    "node-sass": "^4.13.1",
     "react": "^16.7.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.7.0",
@@ -29,6 +31,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "bootstrap": "^4.2.1"
   }
 }

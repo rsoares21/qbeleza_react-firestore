@@ -7,6 +7,8 @@ import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
+import './mysass.scss';
+
 class Vote extends Component {
 
   constructor(props) {
@@ -130,7 +132,7 @@ class Vote extends Component {
       'background-color': '#fcfcfa',
       'width': '100%',
       'height': 126,
-      'padding': '4px',
+      //'padding': '4px',
       'border-style': 'solid',
       'border-width': '1px',
       'border-color': 'black'
@@ -140,7 +142,7 @@ class Vote extends Component {
       //'background-color': 'white',
       'width': '65%',
       'height': 100,
-      'padding': '5px',
+      //'padding': '1px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'cyan',
@@ -151,20 +153,21 @@ class Vote extends Component {
       'background-color': 'green',
       'width': '35%',
       //'height': 100,
-      'padding': '0px',
+      //'padding': '0px',
       'border-style': 'solid',
       'border-width': '1px',
       'border-color': 'white'
     }
 
     const homeDiv2Left = {
-      'background-color': 'white',
+      'background-color': 'green',
+      //'left':'0px',
       'width': '100%',
       'height': '100%',
-      'padding': '1px',
-      'border-style': 'solid',
-      'border-width': '4px',
-      'border-color': 'red'
+      //'padding': '1px',
+      //'border-style': 'solid',
+      //'border-width': '4px',
+      //'border-color': 'red'
     }
 
     const homeDiv2Right = {
@@ -180,23 +183,24 @@ class Vote extends Component {
     const homeDiv3Left = {
       'position': 'relative',
       'top': '20px',
-      'background-color': '#ebebeb',
+      //'left': '20px',
+      'background-color': 'magenta',
       'width': '68%',
       'height': '100%',
-      'padding-left': '1px',
+      //'padding-left': '0px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': '#d2c2ff',
     }
 
     const homeDiv3Right = {
-      'background-color': 'white',
-      'width': '32%',
+      'background-color': 'yellow',
+      'width': '100%',
       'position': 'relative',
       'top': '20px',
       //'height': 100,
-      'padding-left': '8px',
-      'padding-top': '12px',
+      //'padding-left': '8px',
+      //'padding-top': '12px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'grey',
@@ -205,26 +209,26 @@ class Vote extends Component {
 
     const homeDiv4Left = {
       'position': 'relative',
-      'top': '8px',
-      'left':'5px',
+      //'top': '8px',
+      'left': '15px',
       'background-color': 'white',
-      'width': '700px',
-      'height': '300PX',
-      'padding-left': '1px',
-      'border-style': 'solid',
-      'border-width': '4px',
-      'border-color': 'white',
+      'width': '700px', // largura principal
+      //'height': '300px',
+      //'padding-left': '1px',
+      //'border-style': 'solid',
+      //'border-width': '4px',
+      //'border-color': 'white',
     }
 
 
     const homeBannerQuadrado = {
-      //'background-color': 'red',
-      'width': '30%',
-      'top': '20px',
-      'padding':'5px',
+      'background-color': 'red',
+      'width': '336',
+      //'top': '20px',
+      //'padding':'5px',
       //'height': 100,
-      'padding-left': '8px',
-      'padding-top': '12px',
+      //'padding-left': '8px',
+      //'padding-top': '12px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'grey',
@@ -302,7 +306,6 @@ class Vote extends Component {
       'color': 'orange'
     }
 
-    
 
 
     //  <div class="container" style={{ 'background-color': '#fdcd3b' }}>
@@ -310,11 +313,11 @@ class Vote extends Component {
     return (
 
 
-      <div class="container" style={{ 'background-color': 'white', 'width':'1050px', 'background':'white'}}>
+      <div class="container" style={{ 'background-color': 'white', 'width': '100%', 'background': 'white' }}>
 
 
 
-        <div class="row" style={{ 'padding-top': '20px','padding-left': '30px' }}>
+        <div class="row" style={{ 'padding-top': '20px', 'padding-left': '20px' }}>
           <div style={homeDiv1Left}>
             <img src={require('./images/logo_enquetepop.png')} />
           </div>
@@ -329,21 +332,14 @@ class Vote extends Component {
               <div class="column" style={{ 'padding': '1px' }}>
                 <img src={require('./images/teste.jpg')} width="50" height="40" /> &nbsp;
                     <a style={gradient3}>{this.state.board.nome}</a>
-              </div>
-              <div>
-                <br></br>
-                <div class="icon-cards">
-	<div class="icon-cards__content">
-		<div class="icon-cards__item"></div>
-		<div class="icon-cards__item"></div>
-		<div class="icon-cards__item"></div>
-		<div class="icon-cards__item"></div>
-		<div class="icon-cards__item"></div>
-	</div>
-</div>
+                <p>BasassAA</p>
+                <p>BasassAA</p>
+                <p>BasassAA</p>
+                <p>BasassAA</p>
+                <p>BasassAA</p>
+                <p>BasassAA</p>
 
               </div>
-
             </div>
           </div>
 
@@ -366,9 +362,9 @@ class Vote extends Component {
         <div class="row">
 
           <div style={homeDiv3Left}>
-            <div class="row" style={{ 'position': 'relative', 'left': '13px' }}>
+            <div class="row" style={{ 'position': 'relative', 'left': '15px', 'width': '100%' }}>
               <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '238px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -386,7 +382,7 @@ class Vote extends Component {
                 </div>
               </div>
               <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '238px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -405,7 +401,7 @@ class Vote extends Component {
                 </div>
               </div>
               <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '238px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -434,8 +430,8 @@ class Vote extends Component {
             <hr></hr>
             <h5 >De Férias com o Ex</h5>
             <a href="#"> Miguel e Maurício </a>brigam por <a href="#">causa</a> de Fernanda
-
           </div>
+
         </div>
 
         <div class="row">
