@@ -3,8 +3,9 @@ import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 import { ButtonToolbar } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
 class Vote extends Component {
 
@@ -137,18 +138,18 @@ class Vote extends Component {
 
     const homeDiv1Left = {
       'background-color': 'black',
-      'width': '60%',
+      'width': '65%',
       //'height': 100,
       'padding': '5px',
       'border-style': 'solid',
-      'border-width': '1px',
+      'border-width': '2px',
       'border-color': 'cyan',
       'border-top-left-radius': '15px'
     }
 
     const homeDiv1Right = {
       'background-color': 'white',
-      'width': '40%',
+      'width': '35%',
       //'height': 100,
       'padding': '0px',
       'border-style': 'solid',
@@ -158,42 +159,46 @@ class Vote extends Component {
 
     const homeDiv2Left = {
       'background-color': 'white',
-      'width': '65%',
+      'width': '68%',
       'height': '400px',
-      'padding': '5px',
-      'border-style': 'solid',
-      'border-width': '1px',
-      'border-color': 'pink'
+      'padding': '1px',
+      //'border-style': 'solid',
+      //'border-width': '4px',
+      //'border-color': 'magenta'
     }
 
     const homeDiv2Right = {
+      'position':'relative',
       'background-color': 'white',
-      'width': '35%',
+      'width': '32%',
+      'padding-top':'50px',
       //'height': 100,
-      'padding': '0px',
-      'border-style': 'solid',
-      'border-width': '1px',
-      'border-color': 'black'
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': 'black'
     }
 
     const homeDiv3Left = {
-      //'background-color': 'red',
-      'width': '75%',
-      'height': '400px',
-      'padding': '5px',
-      'border-style': 'solid',
-      'border-width': '1px',
-      'border-color': 'black'
+      'position': 'relative',
+      'background-color': '#ebebeb',
+      'width': '68%',
+      'height': '100%',
+      'padding-left':'1px',
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': '#d2c2ff',
     }
 
     const homeDiv3Right = {
-      'background-color': '#bbb',
-      'width': '25%',
+      'background-color': 'white',
+      'width': '32%',
       //'height': 100,
-      'padding': '0px',
-      'border-style': 'solid',
-      'border-width': '1px',
-      'border-color': 'black'
+      'padding-left': '8px',
+      'padding-top': '8px',
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': 'grey',
+      //'border-top-right-radius': '10px',
     }
 
     const homeEnqueteSec1 = {
@@ -213,15 +218,13 @@ class Vote extends Component {
 
     const adHome1 = {
       'background-color': 'white',
-      //'width': '100%',
+      'width': '100%',
       //'height': '100%',
-      'padding': '10px',
+      'padding': '2px',
       'border-style': 'solid',
       'border-width': '1px',
       'border-color': 'white',
       'position': 'relative',
-      'top': '50%',
-      'transform': 'translateY(-50%)'
 
     }
 
@@ -236,25 +239,80 @@ class Vote extends Component {
     }
 
     const gradient3 = {
-      'background': 'linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)',
-      'font-size': '80px',
+      //'background': 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)',
+      'background': 'linear-gradient(19deg, #21D4FD 0%, #ff8a30 100%)',
+      'font-size': '30px',
+      'font-weight': 'bold',
       'color': 'black',
-      '-webkit-text-fill-color':'transparent',
+      '-webkit-text-fill-color': 'transparent',
       '-webkit-background-clip': 'text',
       'filter': 'drop-shadow(0px 3px 2px rgba(0, 0,0, .1))',
-      'font-family': 'Lobster',
-      'margin-top': '-7rem'
+      'font-family': 'monospace',
+      'margin-top': '-7rem '
 
     }
+
+
+
+    const textoCard = {
+      'color': 'orange'
+    }
+
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => link.addEventListener('mouseenter', shootLines));
+    
+    function shootLines(e) {
+    
+      const itemDim = this.getBoundingClientRect(),
+            itemSize = {
+              x: itemDim.right - itemDim.left,
+              y: itemDim.bottom - itemDim.top,
+            },
+            shapes = ['line', 'zigzag'],
+            colors = ['#2FB5F3',
+                      '#FF0A47',
+                      '#FF0AC2',
+                      '#47FF0A'];
+      
+      const chosenC = Math.floor(Math.random() * colors.length),
+            chosenS = Math.floor(Math.random() * shapes.length);
+      
+      // create shape
+      const burst = new mojs.Burst({
+        left: itemDim.left + (itemSize.x/2),
+        top: itemDim.top + (itemSize.y/2),
+        radiusX: itemSize.x,
+        radiusY: itemSize.y,
+        count: 8,
+        
+        children: {
+          shape: shapes[chosenS],
+          radius: 10,
+          scale: {0.8: 1},
+          fill: 'none',
+          points: 7,
+          stroke: colors[chosenC],
+          strokeDasharray: '100%',
+          strokeDashoffset: { '-100%' : '100%' },
+          duration: 350,
+          delay: 100,
+          easing: 'quad.out',
+          isShowEnd: false,
+        }
+      });
+      
+      burst.play();
+    }
+
 
     //  <div class="container" style={{ 'background-color': '#fdcd3b' }}>
 
     return (
 
 
-      <div class="container" style={{ 'background-color': 'white' }}>
+      <div class="container" style={{ 'background-color': 'white', 'padding-top': '6px' }}>
 
-        <hr></hr>
 
 
         <div class="row">
@@ -303,7 +361,7 @@ class Vote extends Component {
 
               <div class="panel-body">
                 <dl>
-                  <img src={require('./images/teste.jpg')} width="730" height="340" />
+                  <img src={require('./images/teste.jpg')} width="710" height="326" />
                 </dl>
 
               </div>
@@ -321,9 +379,82 @@ class Vote extends Component {
 
           </div>
         </div>
-        <br></br>
+
         <div class="row">
+
           <div style={homeDiv3Left}>
+            <br></br>
+            <div class="row" style={{ 'position': 'relative', 'left': '13px', 'top': '-25px' }}>
+              <div class="column" style={{ 'padding': '1px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
+                  <div class="hover01 columnHover">
+                    <div>
+                      <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h4 class="card-title">The Circle Brasil</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+                </div>
+              </div>
+              <div class="column" style={{ 'padding': '1px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
+                  <div class="hover01 columnHover">
+                    <div>
+                      <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                    </div>
+                  </div>
+
+
+                  <div class="card-body">
+                    <h4 class="card-title">De Férias com o Ex</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+                </div>
+              </div>
+              <div class="column" style={{ 'padding': '1px' }}>
+                <div class="card" style={{ 'width': '256px' }}>
+                  <div class="hover01 columnHover">
+                    <div>
+                      <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h4 class="card-title">Masterchef Profissionais 2019</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        
+
+
+          <div style={homeDiv3Right}>
+            <h5 >Big Brother Brasil</h5>
+            <a>Brothers se reúnem para as compras da Xepa no Mercado BBB</a>
+
+            <h4 >De Férias com o Ex</h4>
+            <a>Miguel e Maurício brigam por causa de Fernanda</a>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div style={homeDiv2Left}>
+            <br></br>
+            <br></br>
+            <br></br>
+
+
+
             <dt>Descrição detalhada:</dt>
             <dd>{this.state.board.descricao}</dd>
 
@@ -341,20 +472,18 @@ class Vote extends Component {
 
             <br />
             <Link to="/" class="btn btn-info">Voltar</Link>&nbsp;
-          </div>
 
-          <div style={homeDiv3Right}>
-            <h2>ARTIGOS</h2>
-            <p>Some text..</p>
-          </div>
+                    </div>
         </div>
 
 
 
 
 
-
       </div>
+
+
+
     );
   }
 }
