@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
+import { ButtonToolbar } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
 class Vote extends Component {
 
@@ -121,51 +125,207 @@ class Vote extends Component {
   render() {
 
 
-    /* Create two unequal columns that floats next to each other */
-    const column = {
-      float: 'right',
-      padding: '10px',
-      height: '300px', /* Should be removed. Only for demonstration */
+    const headStyle = {
+      'background-color': '#fcfcfa',
+      'width': '100%',
+      'height': 126,
+      'padding': '4px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
     }
 
-    const left = {
-      width: '25%',
+    const homeDiv1Left = {
+      'background-color': 'black',
+      'width': '60%',
+      //'height': 100,
+      'padding': '5px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'cyan',
+      'border-top-left-radius': '15px'
     }
 
-    const right = {
-      width: '75%',
+    const homeDiv1Right = {
+      'background-color': 'white',
+      'width': '40%',
+      //'height': 100,
+      'padding': '0px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'white'
     }
 
-    /* Clear floats after the columns */
-    const row: 'after' = {
-      content: "",
-      display: 'table',
-      clear: 'both'
+    const homeDiv2Left = {
+      'background-color': 'white',
+      'width': '65%',
+      'height': '400px',
+      'padding': '5px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'pink'
     }
+
+    const homeDiv2Right = {
+      'background-color': 'white',
+      'width': '35%',
+      //'height': 100,
+      'padding': '0px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
+    }
+
+    const homeDiv3Left = {
+      //'background-color': 'red',
+      'width': '75%',
+      'height': '400px',
+      'padding': '5px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
+    }
+
+    const homeDiv3Right = {
+      'background-color': '#bbb',
+      'width': '25%',
+      //'height': 100,
+      'padding': '0px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
+    }
+
+    const homeEnqueteSec1 = {
+      'background-color': 'white',
+      //'width': '100%',
+      'height': '100%',
+      'padding': '10px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black',
+      'position': 'relative',
+      'top': '50%',
+      'transform': 'translateY(-50%)',
+      'border-bottom-right-radius': '15px'
+
+    }
+
+    const adHome1 = {
+      'background-color': 'white',
+      //'width': '100%',
+      //'height': '100%',
+      'padding': '10px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'white',
+      'position': 'relative',
+      'top': '50%',
+      'transform': 'translateY(-50%)'
+
+    }
+
+    const homeEnqueteSec2 = {
+      //'background-color': 'cyan',
+      'width': '100%',
+      'height': '198px',
+      'padding': '0px',
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
+    }
+
+    const gradient3 = {
+      'background': 'linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)',
+      'font-size': '80px',
+      'color': 'black',
+      '-webkit-text-fill-color':'transparent',
+      '-webkit-background-clip': 'text',
+      'filter': 'drop-shadow(0px 3px 2px rgba(0, 0,0, .1))',
+      'font-family': 'Lobster',
+      'margin-top': '-7rem'
+
+    }
+
+    //  <div class="container" style={{ 'background-color': '#fdcd3b' }}>
 
     return (
 
 
+      <div class="container" style={{ 'background-color': 'white' }}>
 
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <br />
-            <h3 class="panel-title">
-              <img src={require('./images/capa_bbb20.jfif')} width="50" height="40" /> &nbsp;
-              {this.state.board.nome}
+        <hr></hr>
 
-            </h3>
+
+        <div class="row">
+          <div style={homeDiv1Left}>
+            <img src={require('./images/logo.png')} />
           </div>
 
-          <div class="panel-body">
-            <br />
-            <dl>
-              <img src={require('./images/teste.jpg')} width="661" height="346" />
+          <div style={homeDiv1Right}>
+            <div style={homeEnqueteSec1}>
+              <center>
+                <ButtonToolbar>
+                  <Button variant="outline-success">Success</Button>
+                  <Button variant="outline-warning">Warning</Button>
+                  <Button variant="outline-danger">Danger</Button>
+                  <Button variant="outline-info">Info</Button>
+                  <Button variant="outline-dark">Dark</Button>
+                </ButtonToolbar>
 
-              <dt>Descrição detalhada:</dt>
-              <dd>{this.state.board.descricao}</dd>
-            </dl>
+
+              </center>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <div class="row">
+
+          <div style={homeDiv2Left}>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <img src={require('./images/capa_bbb20.jfif')} width="50" height="40" /> &nbsp;
+                    <a style={gradient3}>{this.state.board.nome}</a>
+                </h3>
+              </div>
+
+              <div class="panel-body">
+                <dl>
+                  <img src={require('./images/teste.jpg')} width="730" height="340" />
+                </dl>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div style={homeDiv2Right}>
+            <div style={adHome1}>
+              <center>
+                <img src={require('./images/ad_336x280.jfif')} width="336" height="280" />
+              </center>
+            </div>
+
+          </div>
+        </div>
+        <br></br>
+        <div class="row">
+          <div style={homeDiv3Left}>
+            <dt>Descrição detalhada:</dt>
+            <dd>{this.state.board.descricao}</dd>
 
 
             {this.state.participantes.map(participante =>
@@ -181,30 +341,20 @@ class Vote extends Component {
 
             <br />
             <Link to="/" class="btn btn-info">Voltar</Link>&nbsp;
-
-
           </div>
 
-          ----------------------------------------
-
-
-        </div>
-
-        <div class="row">
-          <div class="column left" style={{ 'background-color': 'red', 'width': '300px' }}>
-            <h2>Column 1</h2>
+          <div style={homeDiv3Right}>
+            <h2>ARTIGOS</h2>
             <p>Some text..</p>
           </div>
-          {/* <div class="column right" style={{ 'background-color': '#bbb' }}>
-            <h2>Column 2</h2>
-            <p>Some text..</p>
-            </div>*/}
         </div>
+
+
+
+
+
 
       </div>
-
-
-
     );
   }
 }
