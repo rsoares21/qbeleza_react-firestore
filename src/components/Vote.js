@@ -148,7 +148,7 @@ class Vote extends Component {
     }
 
     const homeDiv1Right = {
-      'background-color': 'white',
+      'background-color': 'green',
       'width': '35%',
       //'height': 100,
       'padding': '0px',
@@ -159,28 +159,27 @@ class Vote extends Component {
 
     const homeDiv2Left = {
       'background-color': 'white',
-      'width': '68%',
-      'height': '400px',
+      'width': '100%',
+      'height': '100%',
       'padding': '1px',
-      //'border-style': 'solid',
-      //'border-width': '4px',
-      //'border-color': 'magenta'
+      'border-style': 'solid',
+      'border-width': '4px',
+      'border-color': 'red'
     }
 
     const homeDiv2Right = {
       'position': 'relative',
-      'background-color': 'white',
+      'background-color': 'red',
       'width': '32%',
-      'padding-top': '50px',
       //'height': 100,
-      //'border-style': 'solid',
-      //'border-width': '1px',
-      //'border-color': 'black'
+      'border-style': 'solid',
+      'border-width': '1px',
+      'border-color': 'black'
     }
 
     const homeDiv3Left = {
       'position': 'relative',
-      'top':'20px',
+      'top': '20px',
       'background-color': '#ebebeb',
       'width': '68%',
       'height': '100%',
@@ -193,8 +192,36 @@ class Vote extends Component {
     const homeDiv3Right = {
       'background-color': 'white',
       'width': '32%',
-      'position':'relative',
-      'top':'20px',
+      'position': 'relative',
+      'top': '20px',
+      //'height': 100,
+      'padding-left': '8px',
+      'padding-top': '12px',
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': 'grey',
+      //'border-top-right-radius': '10px',
+    }
+
+    const homeDiv4Left = {
+      'position': 'relative',
+      'top': '8px',
+      'left':'5px',
+      'background-color': 'white',
+      'width': '700px',
+      'height': '300PX',
+      'padding-left': '1px',
+      'border-style': 'solid',
+      'border-width': '4px',
+      'border-color': 'white',
+    }
+
+
+    const homeBannerQuadrado = {
+      //'background-color': 'red',
+      'width': '30%',
+      'top': '20px',
+      'padding':'5px',
       //'height': 100,
       'padding-left': '8px',
       'padding-top': '12px',
@@ -205,7 +232,7 @@ class Vote extends Component {
     }
 
     const homeEnqueteSec1 = {
-      'background-color': 'white',
+      'background-color': 'cyan',
       //'width': '100%',
       'height': '100%',
       'padding': '10px',
@@ -244,7 +271,7 @@ class Vote extends Component {
 
     const gradient3 = {
       //'background': 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)',
-      'background': 'linear-gradient(19deg, #21D4FD 0%, #ff8a30 100%)',
+      'background': 'linear-gradient(19deg, #384fff 0%, #f56c6c 100%)',
       'font-size': '30px',
       'font-weight': 'bold',
       'color': 'black',
@@ -256,92 +283,83 @@ class Vote extends Component {
 
     }
 
+    const homeDivMain = {
+      'background-color': 'yellow',
+      'width': '700px',
+      'position': 'relative',
+      'top': '20px',
+      //'height': 100,
+      'padding-left': '8px',
+      'padding-top': '12px',
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': 'grey',
+      //'border-top-right-radius': '10px',
+    }
 
 
     const textoCard = {
       'color': 'orange'
     }
 
-    let oldRender = Text.prototype.render;
-    Text.prototype.render = function (...args) {
-      let origin = oldRender.call(this, ...args);
-      return React.cloneElement(origin, {
-        style: [{ color: 'red', fontFamily: 'Arial' }, origin.props.style]
-      });
-    };
+    
+
 
     //  <div class="container" style={{ 'background-color': '#fdcd3b' }}>
 
     return (
 
 
-      <div class="container" style={{ 'background-color': 'white' }}>
+      <div class="container" style={{ 'background-color': 'white', 'width':'1050px', 'background':'white'}}>
 
 
 
-        <div class="row" style={{ 'padding-top': '6px' }}>
+        <div class="row" style={{ 'padding-top': '20px','padding-left': '30px' }}>
           <div style={homeDiv1Left}>
             <img src={require('./images/logo_enquetepop.png')} />
           </div>
-
-          <div style={homeDiv1Right}>
-            <div style={homeEnqueteSec1}>
-              <center>
-                {/* ESPACO RESERVADO PARA BANNE OU ETC*/}
-              </center>
-            </div>
-
-          </div>
-
-
         </div>
-
-
-
-
-
 
 
 
         <div class="row">
 
-          <div style={homeDiv2Left}>
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title" style={{ 'marginTop': '20px', 'marginBottom': '10px' }}>
-                  <img src={require('./images/capa_bbb20.jfif')} width="50" height="40" /> &nbsp;
+          <div style={homeDiv4Left}>
+            <div class="row" style={{ 'position': 'relative', 'left': '13px' }}>
+              <div class="column" style={{ 'padding': '1px' }}>
+                <img src={require('./images/teste.jpg')} width="50" height="40" /> &nbsp;
                     <a style={gradient3}>{this.state.board.nome}</a>
-                </h3>
               </div>
-
-              <div class="panel-body">
-                <dl>
-                  <img src={require('./images/teste.jpg')} width="710" height="326" />
-                </dl>
+              <div>
+                <br></br>
+                <div class="icon-cards">
+	<div class="icon-cards__content">
+		<div class="icon-cards__item"></div>
+		<div class="icon-cards__item"></div>
+		<div class="icon-cards__item"></div>
+		<div class="icon-cards__item"></div>
+		<div class="icon-cards__item"></div>
+	</div>
+</div>
 
               </div>
 
             </div>
-
           </div>
 
-          <div style={homeDiv2Right}>
-            <div style={adHome1}>
-              <center>
-                <img src={require('./images/banner_quadrado.gif')} width="336" height="280" />
-              </center>
-            </div>
-
+          <div style={homeBannerQuadrado}>
+            <center>
+              <img src={require('./images/banner_quadrado.gif')} />
+            </center>
           </div>
         </div>
 
-        <div class="row" style={{ 'position': 'relative', 'top': '20px'}}>
-          <div style={{ 'position': 'relative', 'paddingTop': '20px','paddingBottom': '20px', 'width':'100%' }}>
+
+
+        <div class="row" style={{ 'position': 'relative', 'top': '20px' }}>
+          <div style={{ 'position': 'relative', 'paddingTop': '20px', 'paddingBottom': '20px', 'width': '100%' }}>
             <center><img src={require('./images/banner_retangular_zorba.png')} /></center>
           </div>
-
-
 
         </div>
 
@@ -349,8 +367,8 @@ class Vote extends Component {
 
           <div style={homeDiv3Left}>
             <div class="row" style={{ 'position': 'relative', 'left': '13px' }}>
-              <div class="column" style={{ 'padding': '1px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
+              <div class="column" style={{ 'padding': '0px' }}>
+                <div class="card" style={{ 'width': '238px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -358,7 +376,7 @@ class Vote extends Component {
                   </div>
 
                   <div class="card-body">
-                    <h4 class="card-title">The Circle Brasil</h4>
+                    <h5>The Circle Brasil</h5>
                     <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
                     <ButtonToolbar>
                       <Button variant="primary">Participar</Button>
@@ -367,8 +385,8 @@ class Vote extends Component {
                   </div>
                 </div>
               </div>
-              <div class="column" style={{ 'padding': '1px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
+              <div class="column" style={{ 'padding': '0px' }}>
+                <div class="card" style={{ 'width': '238px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -377,7 +395,7 @@ class Vote extends Component {
 
 
                   <div class="card-body">
-                    <h4 class="card-title">De Férias com o Ex</h4>
+                    <h5>De Férias com o Ex</h5>
                     <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
                     <ButtonToolbar>
                       <Button variant="primary">Participar</Button>
@@ -386,8 +404,8 @@ class Vote extends Component {
                   </div>
                 </div>
               </div>
-              <div class="column" style={{ 'padding': '1px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
+              <div class="column" style={{ 'padding': '0px' }}>
+                <div class="card" style={{ 'width': '238px' }}>
                   <div class="hover01 columnHover">
                     <div>
                       <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
@@ -395,7 +413,7 @@ class Vote extends Component {
                   </div>
 
                   <div class="card-body">
-                    <h4 class="card-title">Masterchef Profissionais 2019</h4>
+                    <h5>Masterchef Profissionais 2019</h5>
                     <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
                     <ButtonToolbar>
                       <Button variant="primary">Participar</Button>
@@ -412,10 +430,10 @@ class Vote extends Component {
 
           <div style={homeDiv3Right}>
             <h5 >Big Brother Brasil</h5>
-            <a href="#">Brothers se reúnem para as compras da Xepa no Mercado BBB</a>
+            <a href="#"> Brothers </a>se reúnem para as compras da Xepa no Mercado BBB
             <hr></hr>
             <h5 >De Férias com o Ex</h5>
-            <a href="#">Miguel e Maurício brigam por causa de Fernanda</a>
+            <a href="#"> Miguel e Maurício </a>brigam por <a href="#">causa</a> de Fernanda
 
           </div>
         </div>
