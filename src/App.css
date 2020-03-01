@@ -22,6 +22,35 @@
   color: #61dafb;
 }
 
+:root {
+  --mainColor: #70aada;
+}
+
+a {
+  background:
+     linear-gradient(
+       to right,
+       var(--mainColor) 0%,
+       var(--mainColor) 5px,
+       transparent 5px
+     );
+    background-repeat: repeat-x;
+    background-size: 100%;
+  color: #000;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  background:
+     linear-gradient(
+       to right,
+       var(--mainColor) 0%,
+       var(--mainColor) 5px,
+       transparent
+     );
+}
+
 .columnHover {
 	margin: 15px 15px 0;
 	padding: 0;
@@ -89,36 +118,6 @@ figure:hover+span {
 	-webkit-transform: scale(1.3);
 	transform: scale(1.3);
 }
-
-a:hover {
-  color: #efefef;
-}
-
-a:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #333333;
-  z-index: -1;
-  transition: all 0.1s cubic-bezier(0.000, 0.590, 1.000, 0.260);
-}
-
-a:hover:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #333333;
-  z-index: -1;
-}
-
 
 .card-body {
   padding-top: 0px;
