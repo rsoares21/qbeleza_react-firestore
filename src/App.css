@@ -52,8 +52,8 @@ a:hover {
 }
 
 .columnHover {
-	margin: 15px 15px 0;
-	padding: 0;
+	margin: 5px 5px 0;
+  padding: 0;
 }
 .columnHover:last-child {
 	padding-bottom: 60px;
@@ -66,7 +66,7 @@ a:hover {
 .columnHover div {
 	position: relative;
 	float: left;
-	width: 300px;
+	width: 230px;
 	height: 200px;
 	margin: 0 0 0 25px;
 	padding: 0;
@@ -94,12 +94,15 @@ a:hover {
 
 
 figure {
-	width: 210px;
+	width: 235px;
 	height: 160px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 	background: rgb(0, 0, 0);
-	overflow: hidden;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px
+
 }
 figure:hover+span {
 	bottom: -6px;
@@ -112,7 +115,7 @@ figure:hover+span {
 	-webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+	transition: .2s ease-in-out;
 }
 .hover01 figure:hover img {
 	-webkit-transform: scale(1.3);
@@ -120,11 +123,10 @@ figure:hover+span {
 }
 
 .card-body {
-  padding-top: 0px;
+  padding-top: 10px;
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
-
 
 
 

@@ -3,11 +3,9 @@ import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 import { ButtonToolbar } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
-
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
 import './mysass.scss';
+
 
 class Vote extends Component {
 
@@ -140,9 +138,10 @@ class Vote extends Component {
 
     const homeDiv1Left = {
       //'background-color': 'white',
+      'position': 'relative',
       'width': '65%',
       'height': 100,
-      //'padding': '1px',
+      'padding': '0px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'cyan',
@@ -150,7 +149,7 @@ class Vote extends Component {
     }
 
     const homeDiv1Right = {
-      'background-color': 'green',
+      //'background-color': 'green',
       'width': '35%',
       //'height': 100,
       //'padding': '0px',
@@ -160,7 +159,7 @@ class Vote extends Component {
     }
 
     const homeDiv2Left = {
-      'background-color': 'green',
+      //'background-color': 'green',
       //'left':'0px',
       'width': '100%',
       'height': '100%',
@@ -182,10 +181,10 @@ class Vote extends Component {
 
     const homeDiv3Left = {
       'position': 'relative',
-      'top': '20px',
+      //'top': '10px',
       //'left': '20px',
       'background-color': 'magenta',
-      'width': '68%',
+      'width': '100%',
       'height': '100%',
       //'padding-left': '0px',
       //'border-style': 'solid',
@@ -208,12 +207,13 @@ class Vote extends Component {
     }
 
     const homeDiv4Left = {
-      'position': 'relative',
-      //'top': '8px',
+      //'position': 'relative',
+      //'top': '-38px',
       'left': '15px',
-      'background-color': 'white',
-      'width': '700px', // largura principal
-      //'height': '300px',
+      //'background-color': 'green',
+      'width': '500px', // largura principal
+      'display': 'flex',
+      'height': '580px',
       //'padding-left': '1px',
       //'border-style': 'solid',
       //'border-width': '4px',
@@ -222,13 +222,14 @@ class Vote extends Component {
 
 
     const homeBannerQuadrado = {
-      'background-color': 'red',
-      'width': '336',
+      //'background-color': 'red',
+      'width': '336px',
       //'top': '20px',
       //'padding':'5px',
       //'height': 100,
-      //'padding-left': '8px',
-      //'padding-top': '12px',
+      'padding-left': '42px',
+      'padding-top': '62px',
+      //'padding-bottom': '12px',
       //'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'grey',
@@ -276,7 +277,7 @@ class Vote extends Component {
     const gradient3 = {
       //'background': 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)',
       'background': 'linear-gradient(19deg, #384fff 0%, #f56c6c 100%)',
-      'font-size': '30px',
+      'font-size': '20px',
       'font-weight': 'bold',
       'color': 'black',
       '-webkit-text-fill-color': 'transparent',
@@ -315,11 +316,11 @@ class Vote extends Component {
 
       <div class="container" style={{ 'background-color': 'white', 'width': '100%', 'background': 'white' }}>
 
+        <img src={require('./images/logo_enquetepop.png')} style={{ 'width': '500px', 'height': '0px', 'top': '1px' }} />
 
-
-        <div class="row" style={{ 'padding-top': '20px', 'padding-left': '20px' }}>
+        <div class="row" style={{ 'padding-top': '0px', 'padding-left': '12px' }}>
           <div style={homeDiv1Left}>
-            <img src={require('./images/logo_enquetepop.png')} />
+            <img src={require('./images/logo_enquetepop.png')} style={{ 'background-color': 'white', 'width': '400px' }} />&nbsp;
           </div>
         </div>
 
@@ -328,16 +329,40 @@ class Vote extends Component {
         <div class="row">
 
           <div style={homeDiv4Left}>
-            <div class="row" style={{ 'position': 'relative', 'left': '13px' }}>
-              <div class="column" style={{ 'padding': '1px' }}>
-                <img src={require('./images/teste.jpg')} width="50" height="40" /> &nbsp;
-                    <a style={gradient3}>{this.state.board.nome}</a>
-                <p>BasassAA</p>
-                <p>BasassAA</p>
-                <p>BasassAA</p>
-                <p>BasassAA</p>
-                <p>BasassAA</p>
-                <p>BasassAA</p>
+            <div class="row" style={{ 'position': 'relative', 'left': '13px', 'top': '-40px' }}>
+              <div class="column" style={{ 'padding-top': '1px', 'padding-left': '0px' }}>
+                <div style={{ 'width': '500px', 'height': '250px', 'padding-top': '0px' }}>
+                
+
+                <div class="buttons" style={{'padding-top':'18px', 'padding-left':'12px', 'padding-bottom':'22px'}}>
+                    <button class="fill">Noticias</button>
+                    <button class="fill">Contato</button>
+                    <button class="fill">Registrar</button>
+                    <button class="fill">Login</button>
+
+                </div>
+
+
+                  <div class="row">
+                    <div class="example-2 card">
+                      <div class="wrapper">
+                        <div class="header">
+                        </div>
+                        <div class="data">
+                          <div class="content">
+                            <span class="author">Enquete</span>
+                            <h1 class="title"><a href="#">Quem será o sexto eliminado no BBB 20 ? Participe da votação !</a></h1>
+                            <p class="text">O paredão da semana está formado com Guilherme, Pyong Lee e Giselly. Vote na enquete e descubra o eliminado da semana!</p>
+                            <a href="#" class="button">Participar!</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
 
               </div>
             </div>
@@ -345,124 +370,136 @@ class Vote extends Component {
 
           <div style={homeBannerQuadrado}>
             <center>
-              <img src={require('./images/banner_quadrado.gif')} />
+              <img src={require('./images/banner_quadrado.gif')} style={{ 'width': '336' }} />
             </center>
           </div>
         </div>
 
 
 
-        <div class="row" style={{ 'position': 'relative', 'top': '20px' }}>
-          <div style={{ 'position': 'relative', 'paddingTop': '20px', 'paddingBottom': '20px', 'width': '100%' }}>
-            <center><img src={require('./images/banner_retangular_zorba.png')} /></center>
-          </div>
 
-        </div>
+        <div class="row" style={{ 'width': '100%' }}>
+          <center>
 
-        <div class="row">
-
-          <div style={homeDiv3Left}>
-            <div class="row" style={{ 'position': 'relative', 'left': '15px', 'width': '100%' }}>
-              <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
-                  <div class="hover01 columnHover">
-                    <div>
-                      <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                    </div>
-                  </div>
-
-                  <div class="card-body">
-                    <h5>The Circle Brasil</h5>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <ButtonToolbar>
-                      <Button variant="primary">Participar</Button>
-                    </ButtonToolbar>
-
-                  </div>
-                </div>
-              </div>
-              <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
-                  <div class="hover01 columnHover">
-                    <div>
-                      <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                    </div>
-                  </div>
-
-
-                  <div class="card-body">
-                    <h5>De Férias com o Ex</h5>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <ButtonToolbar>
-                      <Button variant="primary">Participar</Button>
-                    </ButtonToolbar>
-
-                  </div>
-                </div>
-              </div>
-              <div class="column" style={{ 'padding': '0px' }}>
-                <div class="card" style={{ 'width': '256px' }}>
-                  <div class="hover01 columnHover">
-                    <div>
-                      <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                    </div>
-                  </div>
-
-                  <div class="card-body">
-                    <h5>Masterchef Profissionais 2019</h5>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <ButtonToolbar>
-                      <Button variant="primary">Participar</Button>
-                    </ButtonToolbar>
-
-                  </div>
-                </div>
-              </div>
-
+            <div style={{ 'position': 'relative', 'paddingTop': '20px', 'paddingBottom': '10px', 'width': '100%' }}>
+              <center><img src={require('./images/banner_retangular_zorba.png')} style={{ 'width': '99%' }} /></center>
             </div>
-          </div>
-
-
-
-          <div style={homeDiv3Right}>
-            <h5 >Big Brother Brasil</h5>
-            <a href="#"> Brothers </a>se reúnem para as compras da Xepa no Mercado BBB
-            <hr></hr>
-            <h5 >De Férias com o Ex</h5>
-            <a href="#"> Miguel e Maurício </a>brigam por <a href="#">causa</a> de Fernanda
-          </div>
-
+          </center>
         </div>
 
-        <div class="row">
+        <div class="row" style={{ 'padding': '5px' }}>
           <div style={homeDiv2Left}>
-            <br></br>
-            <br></br>
-            <br></br>
+            <center>
+              <div class="row" style={{ 'position': 'relative', 'left': '0px', 'width': '100%' }}>
+                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
 
+                  <div class="cardX" style={{ 'width': '248px' }}>
+                    <div class="hover01 columnHover">
+                      <div>
+                        <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                      </div>
+                    </div>
 
-
-            <dt>Descrição detalhada:</dt>
-            <dd>{this.state.board.descricao}</dd>
-
-
-            {this.state.participantes.map(participante =>
-              <tr height="50">
-                <td>
-                  <button onClick={this.vote.bind(this, participante.id)} class="btn btn-warning"><b>{participante.nome}</b> ({participante.votos}) {parseFloat(participante.percentual).toFixed(2)}%</button>
-                </td>
-              </tr>
-            )}
-            <dl>
-              <dd><b>Total de Votos:</b> {this.state.totalVotos}</dd>
-            </dl>
-
-            <br />
-            <Link to="/" class="btn btn-info">Voltar</Link>&nbsp;
+                    <div class="card-body">
+                      <h5>The Circle Brasil</h5>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                      <ButtonToolbar>
+                        <Button variant="primary">Participar</Button>
+                      </ButtonToolbar>
 
                     </div>
+                  </div>
+                </div>
+                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
+                  <div class="cardX" style={{ 'width': '248px' }}>
+                    <div class="hover01 columnHover">
+                      <div>
+                        <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                      </div>
+                    </div>
+
+
+                    <div class="card-body">
+                      <h5>De Férias com o Ex</h5>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                      <ButtonToolbar>
+                        <Button variant="primary">Participar</Button>
+                      </ButtonToolbar>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
+                  <div class="cardX" style={{ 'width': '248px' }}>
+                    <div class="hover01 columnHover">
+                      <div>
+                        <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                      </div>
+                    </div>
+
+
+                    <div class="card-body">
+                      <h5>De Férias com o Ex</h5>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                      <ButtonToolbar>
+                        <Button variant="primary">Participar</Button>
+                      </ButtonToolbar>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
+                  <div class="cardX" style={{ 'width': '248px' }}>
+                    <div class="hover01 columnHover">
+                      <div>
+                        <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
+                      </div>
+                    </div>
+
+
+                    <div class="card-body">
+                      <h5>De Férias com o Ex</h5>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                      <ButtonToolbar>
+                        <Button variant="primary">Participar</Button>
+                      </ButtonToolbar>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </center>
+          </div>
         </div>
 
+
+
+
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src={require('./images/teste.jpg')} width="60" height="50"/>
+                <a style={gradient3}>{this.state.board.nome}</a>
+
+
+        <dt>Descrição detalhada:</dt>
+        <dd>{this.state.board.descricao}</dd>
+
+
+        {this.state.participantes.map(participante =>
+          <tr height="50">
+            <td>
+              <button onClick={this.vote.bind(this, participante.id)} class="btn btn-warning"><b>{participante.nome}</b> ({participante.votos}) {parseFloat(participante.percentual).toFixed(2)}%</button>
+            </td>
+          </tr>
+        )}
+        <dl>
+          <dd><b>Total de Votos:</b> {this.state.totalVotos}</dd>
+        </dl>
+
+        <br />
+        <Link to="/" class="btn btn-info">Voltar</Link>&nbsp;
 
 
 

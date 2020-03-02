@@ -1,9 +1,9 @@
 
 body {
   //align-items: center;
-  background: #642B73;
-  background: linear-gradient(to bottom, rgb(212, 103, 103), rgb(255, 0, 0));
-  //display: flex;
+  //background: #642B73;
+  //background: linear-gradient(to bottom, rgb(212, 103, 103), rgb(255, 0, 0));
+  display: flex;
   //font-family: 'Open Sans', sans;
   //justify-content: center;
   //overflow: hidden;
@@ -12,3 +12,284 @@ body {
   //margin: 0 20px;
 }
 
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+// Variables
+$regal-blue: #034378;
+$san-juan: #2d4e68;
+$bermuda: #77d7b9;
+$white: #fff;
+$black: #000;
+$open-sans: 'Open Sans',
+sans-serif;
+// clear-fix mixin
+@mixin cf {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    //background-image: linear-gradient(to right, $regal-blue, $san-juan);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    //height: 100vh;
+    //font-family: $open-sans;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  h1 {
+    font-family: $open-sans;
+    font-weight: 300;
+  }
+/*
+  .row {
+    max-width: 900px;
+    margin: 50px auto 0;
+  }
+*/
+
+// Base styles
+.card {
+    float: left;
+    padding: 0 1.7rem;
+    width: 100%;
+    .menu-content {
+      @include cf;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      li {
+        display: inline-block;
+      }
+      a {
+        color: $white;
+        //background-color: black;
+      }
+      span {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        font-size: 10px;
+        font-weight: 700;
+        font-family: 'Open Sans';
+        transform: translate(-50%, 0);
+      }
+    }
+    .wrapper {
+      background-color: $white;
+      width: 510px;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
+      &:hover {
+        .data {
+          transform: translateY(0);
+          background-color: black;
+        }
+      }
+    }
+    .data {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      transform: translateY(calc(70px + 1em));
+      transition: transform 0.3s;
+      .content {
+        background-color: rgb(0, 0, 0);
+        padding: 1em;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .author {
+      font-size: 12px;
+    }
+    .title {
+      margin-top: 10px;
+    }
+    .text {
+      height: 70px;
+      margin: 0;
+    }
+    input[type='checkbox'] {
+      display: none;
+    }
+    input[type='checkbox']:checked + .menu-content {
+      transform: translateY(-60px);
+    }
+  }
+  
+  // Second example styles
+.example-2 {
+    .wrapper {
+      //background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
+      //background: url(https://scontent.fsdu5-1.fna.fbcdn.net/v/t1.15752-9/89087868_213769936487852_4024068341248294912_n.jpg?_nc_cat=108&_nc_sid=b96e70&_nc_ohc=cheA_IFCJ7kAX-96sUv&_nc_ht=scontent.fsdu5-1.fna&oh=b669e2c3e1ee6b70d5f4f7ece204d93d&oe=5EEFAFB3) center / cover no-repeat;
+      background: url('./images/paredao6bbb20.png') no-repeat;
+      &:hover {
+        .menu-content {
+          span {
+            transform: translate(-50%, -10px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .header {
+      @include cf;
+      color: $white;
+      padding: 1em;
+      .date {
+        float: left;
+        font-size: 12px;
+      }
+    }
+    .menu-content {
+      float: right;
+      li {
+        margin: 0 5px;
+        position: relative;
+      }
+      span {
+        transition: all 0.3s;
+        opacity: 0;
+      }
+    }
+    .data {
+      color: $white;
+      transform: translateY(calc(70px + 4em));
+    }
+    .title {
+      a {
+        color: $white;
+      }
+    }
+    .button {
+      display: block;
+      width: 100px;
+      margin: 2em auto 1em;
+      text-align: center;
+      font-size: 12px;
+      color: $white;
+      line-height: 1;
+      position: relative;
+      font-weight: 700;
+      &::after {
+        content: '\2192';
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        transition: all 0.3s;
+      }
+      &:hover {
+        &::after {
+          transform: translate(5px, -50%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+/*
+  https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
+  box-shadow: [inset?] [top] [left] [blur] [size] [color];
+
+  Tips:
+    - We're setting all the blurs to 0 since we want a solid fill.
+    - Add the inset keyword so the box-shadow is on the inside of the element
+    - Animating the inset shadow on hover looks like the element is filling in from whatever side you specify ([top] and [left] accept negative values to become [bottom] and [right])
+    - Multiple shadows can be stacked
+    - If you're animating multiple shadows, be sure to keep the same number of shadows so the animation is smooth. Otherwise, you'll get something choppy.
+*/
+
+// Animate the size, inside
+.fill:hover,
+.fill:focus {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+// Animate the size, outside
+.pulse:hover, 
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(rgb(40, 191, 202),0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}
+
+// Size can also be negative; see how it's smaller than the element
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+//=== Set button colors
+// If you wonder why use Sass vars or CSS custom properties...
+  // Make a map with the class names and matching colors
+$colors: (
+  fill: #3c48ec,
+  pulse: #956eef, 
+  close: #7fffa5, 
+  raise: #ffa260, 
+  up: #e4cb58, 
+  slide: #8fc866, 
+  offset: #19bc8b
+);
+
+// Sass variables compile to a static string; CSS variables are dynamic and inherited
+  // Loop through the map and set CSS custom properties using Sass variables
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{adjust-hue($color, 45deg)};
+  }
+}
+
+// Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
+button {  
+    color: var(--color);
+    transition: 0.25s;
+    
+    &:hover,
+    &:focus { 
+      border-color: var(--hover);
+      color: rgb(255, 255, 255);
+    }
+  }
+  
+
+
+// Basic button styles
+button {
+  background: none;
+  border:2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 12px 15px;
+}
+
+h1 { font-weight: 400; }
+
+code { 
+  color: #e4cb58;
+  font: inherit;
+}
