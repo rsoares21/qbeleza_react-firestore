@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './App.css';
-import firebase from './Firebase';
+import firebase from '../Firebase';
 
-class App extends Component {
+class Bounce extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('enquetes').orderBy('ordem', 'asc');
@@ -12,8 +11,8 @@ class App extends Component {
     this.state = {
       surveys: []
     };
-
-    props.history.push("/vote/gwYLhurTb1KY7CFSRQK9");
+    //alert(`bounce to ${props.match.params.id}`)
+    props.history.push(`/enquete/${props.match.params.id}`); 
 
   }
 
@@ -62,11 +61,11 @@ class App extends Component {
 
               <table>
                 <tr>
-                  <td rowspan="2"><img src={require('./components/images/capa_bbb20.jfif')} width="600" height="400" /></td>
-                  <td><img src={require('./components/images/capa_feriascomoex.jfif')} width="500" height="200" /></td>
+                  <td rowspan="2"><img src={require('./images/capa_bbb20.jfif')} width="600" height="400" /></td>
+                  <td><img src={require('./images/capa_feriascomoex.jfif')} width="500" height="200" /></td>
                 </tr>
                 <tr>
-                  <td><img src={require('./components/images/capa_casadosartistas.jfif')} width="500" height="200" /></td>
+                  <td><img src={require('./images/capa_casadosartistas.jfif')} width="500" height="200" /></td>
                 </tr>
               </table>
 
@@ -113,4 +112,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Bounce;

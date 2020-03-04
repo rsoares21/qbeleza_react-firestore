@@ -10,6 +10,8 @@ import Create from './components/Create';
 import Show from './components/Show';
 import Vote from './components/Vote';
 import Vote2 from './components/Vote2';
+import Enquete from './components/Enquete';
+import Bounce from './components/Bounce';
 
 ReactDOM.render(
   <Router>
@@ -20,6 +22,8 @@ ReactDOM.render(
         <Route path='/show/:id' component={Show} />
         <Route path='/vote/:id' component={Vote} />
         <Route path='/vote2/:id' component={Vote2} />
+        <Route path='/enquete/:id' component={Enquete} />
+        <Route path='/bounce/:id' component={Bounce} />
       </div>
   </Router>,
   document.getElementById('root')

@@ -12,10 +12,12 @@ class Vote extends Component {
   constructor(props) {
     super(props);
     this.refParticipantes = firebase.firestore().collection('participantes').where(this.props.match.params.id, '==', true)
+    this.CardsEnquetes = firebase.firestore().collection('enquetes').where('ativo', '==', true)
     this.state = {
       board: {},
       key: '',
       participantes: [],
+      enquetes: [],
       totalVotos: 0
     };
 
@@ -57,6 +59,7 @@ class Vote extends Component {
     });
 
     this.unsubscribe = this.refParticipantes.onSnapshot(this.onCollectionUpdate);
+    this.unsubscribe = this.CardsEnquetes.onSnapshot(this.onCollectionUpdateCardsEnquetes);
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -92,6 +95,38 @@ class Vote extends Component {
 
   }
 
+  onCollectionUpdateCardsEnquetes = (querySnapshot) => {
+
+    //alert(`update`)
+    const enquetes = [];
+    //let totalVotos = 0
+
+    //le o total de votos antes para saber calcular o percentual de cada um
+    //querySnapshot.forEach((doc) => {
+    //alert(JSON.stringify(doc.data()))
+    //const { enquete } = doc.data();
+    //totalVotos = totalVotos + votos
+    //});
+
+
+    querySnapshot.forEach((doc) => {
+      //alert(`update doc.data() : ${doc.id}`)
+      const { nome, descricao, capa, ordem } = doc.data();
+      //let percentual = (votos / totalVotos) * 100
+      enquetes.push({
+        nome: nome, descricao: descricao, capa: capa,  ordem: ordem, id: doc.id
+      });
+
+      //totalVotos = totalVotos + votos
+
+    });
+    this.setState({
+      enquetes,
+      //totalVotos
+    });
+    //alert(`enquetes : ${JSON.stringify(this.state.enquetes)}`)
+
+  }
 
   vote(id) {
     //alert(`vote ${id}`)
@@ -131,9 +166,9 @@ class Vote extends Component {
       'width': '100%',
       'height': 126,
       //'padding': '4px',
-      'border-style': 'solid',
-      'border-width': '1px',
-      'border-color': 'black'
+      //'border-style': 'solid',
+      //'border-width': '1px',
+      //'border-color': 'black'
     }
 
     const homeDiv1Left = {
@@ -153,7 +188,7 @@ class Vote extends Component {
       'width': '35%',
       //'height': 100,
       //'padding': '0px',
-      'border-style': 'solid',
+      //'border-style': 'solid',
       'border-width': '1px',
       'border-color': 'white'
     }
@@ -187,7 +222,7 @@ class Vote extends Component {
       'width': '100%',
       'height': '100%',
       //'padding-left': '0px',
-      //'border-style': 'solid',
+      'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': '#d2c2ff',
     }
@@ -200,7 +235,7 @@ class Vote extends Component {
       //'height': 100,
       //'padding-left': '8px',
       //'padding-top': '12px',
-      //'border-style': 'solid',
+      'border-style': 'solid',
       //'border-width': '1px',
       //'border-color': 'grey',
       //'border-top-right-radius': '10px',
@@ -307,6 +342,26 @@ class Vote extends Component {
       'color': 'orange'
     }
 
+    const footerStyle = {
+      'background': '#4343d8',
+      //'position': 'relative',
+      //'border-style': 'solid', //guia
+      'border-color': 'green',
+      'font-size': '20px',
+      //'font-family': "monospace",
+      //'font-family': "Georgia",
+      'font-family': "Tahoma",
+      //'font-family': "Lucida Console",
+      //'font-weight': 'bold',
+      //'color': '#6c3bd6',
+      'color': '#4343d8',
+
+      'text-align': 'center',
+      'width': '100%',
+      'height': '130px',
+      'paddingTop': '30px'
+
+    }
 
 
     //  <div class="container" style={{ 'background-color': '#fdcd3b' }}>
@@ -314,11 +369,12 @@ class Vote extends Component {
     return (
 
 
-      <div class="container" style={{ 'background-color': 'white', 'width': '100%', 'background': 'white' }}>
+      <div class="container" style={{ 'background-color': 'white', 'width': '1050px', 'background': 'white' }}>
 
         <img src={require('./images/logo_enquetepop.png')} style={{ 'width': '500px', 'height': '0px', 'top': '1px' }} />
 
         <div class="row" style={{ 'padding-top': '0px', 'padding-left': '12px' }}>
+          
           <div style={homeDiv1Left}>
             <img src={require('./images/logo_enquetepop.png')} style={{ 'background-color': 'white', 'width': '400px' }} />&nbsp;
           </div>
@@ -330,17 +386,19 @@ class Vote extends Component {
 
           <div style={homeDiv4Left}>
             <div class="row" style={{ 'position': 'relative', 'left': '13px', 'top': '-40px' }}>
-              <div class="column" style={{ 'padding-top': '1px', 'padding-left': '0px' }}>
-                <div style={{ 'width': '500px', 'height': '250px', 'padding-top': '0px' }}>
-                
-
-                <div class="buttons" style={{'padding-top':'18px', 'padding-left':'12px', 'padding-bottom':'22px'}}>
-                    <button class="fill">Noticias</button>
-                    <button class="fill">Contato</button>
-                    <button class="fill">Registrar</button>
-                    <button class="fill">Login</button>
-
-                </div>
+              <div class="column" style={{ 'padding-top': '1px', 'padding-left': '0px'}}>
+                <div style={{ 'width': '600px', 'height': '250px', 'padding-top': '0px' }}>
+                  <br></br>
+                  <br></br>
+                  {/*
+                  <div class="buttons" style={{'padding-top':'18px', 'padding-left':'12px', 'padding-bottom':'22px'}}>
+                      <Link to={`/vote/${this.state.key}`} ><button class="fill">Noticias</button></Link>
+                      
+                      <button class="fill">Contato</button>
+                      <button class="fill">Registrar</button>
+                      <button class="fill">Login</button>
+                  </div>
+                  */}
 
 
                   <div class="row">
@@ -351,9 +409,12 @@ class Vote extends Component {
                         <div class="data">
                           <div class="content">
                             <span class="author">Enquete</span>
-                            <h1 class="title"><a href="#">Quem será o sexto eliminado no BBB 20 ? Participe da votação !</a></h1>
-                            <p class="text">O paredão da semana está formado com Guilherme, Pyong Lee e Giselly. Vote na enquete e descubra o eliminado da semana!</p>
-                            <a href="#" class="button">Participar!</a>
+                            <h1 class="title"><a href="/enquete/gwYLhurTb1KY7CFSRQK9">Quem você acha que merece ir para o quarto branco ? Vote!</a></h1>
+
+                            <span class="text">Boninho confirma quarto branco essa semana!</span>
+                            <center><Link to={`/enquete/gwYLhurTb1KY7CFSRQK9`} ><button class="fill">Participar</button></Link></center>
+                            
+                            
                           </div>
                         </div>
                       </div>
@@ -376,136 +437,51 @@ class Vote extends Component {
         </div>
 
 
+        <hr></hr>
 
 
-        <div class="row" style={{ 'width': '100%' }}>
-          <center>
+        <div class="wrapper">
+                    <div class="row" >
+                    {this.state.enquetes.map(enquete =>
+                    
+                    <div class="column" style={{ 'border': '3px solid #e3e3e3', 'width': '320px', }}>
+                    <img src={require(`./images/${enquete.capa}`)} style={{ 'border': '1px solid #e3e3e3', 'padding': '2px', 'top': '1px', 'display': 'block', 'margin': 'auto', 'height': '240px', ' max-height': '100%', 'width': 'auto', 'max-width': '100%' }} />
 
-            <div style={{ 'position': 'relative', 'paddingTop': '20px', 'paddingBottom': '10px', 'width': '100%' }}>
-              <center><img src={require('./images/banner_retangular_zorba.png')} style={{ 'width': '99%' }} /></center>
+                    <div style={{ 'border': '0px solid  #ec6161', 'top': '1px', 'display': 'block', 'margin': 'auto', 'height': 'auto', ' max-height': '100%', 'width': 'auto', 'max-width': '100%' }}>
+                      <b>{enquete.nome}</b><br></br><br></br>
+                      {enquete.descricao}<br></br><br></br>
+                      <center><a href={`/enquete/${enquete.id}`}><button class="fill">Participar</button></a></center>
+
+
+                    </div>
+
+                  </div>
+
+                  )}
+                    </div>
+                </div>
+
+                <div>
+          <div>
+            <ul class="social-networks square spin-icon" style={footerStyle}>
+              <li><a href="https://www.facebook.com/" class="icon-facebook">Facebook</a></li>
+              <li><a href="https://instagram.com" class="icon-instagram">Instagram</a></li>
+              <li><a href="https://twitter.com/" class="icon-twitter">Twitter</a></li>
+            </ul>
+            <div style={{ 'text-align': 'center', }}>
+              <p >© 2020 Copyright: enquetepop.com</p>
             </div>
-          </center>
-        </div>
+            <br></br>
 
-        <div class="row" style={{ 'padding': '5px' }}>
-          <div style={homeDiv2Left}>
-            <center>
-              <div class="row" style={{ 'position': 'relative', 'left': '0px', 'width': '100%' }}>
-                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
-
-                  <div class="cardX" style={{ 'width': '248px' }}>
-                    <div class="hover01 columnHover">
-                      <div>
-                        <figure><img src={require('./images/capa_thecirclebrasil.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                      </div>
-                    </div>
-
-                    <div class="card-body">
-                      <h5>The Circle Brasil</h5>
-                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                      <ButtonToolbar>
-                        <Button variant="primary">Participar</Button>
-                      </ButtonToolbar>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
-                  <div class="cardX" style={{ 'width': '248px' }}>
-                    <div class="hover01 columnHover">
-                      <div>
-                        <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                      </div>
-                    </div>
-
-
-                    <div class="card-body">
-                      <h5>De Férias com o Ex</h5>
-                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                      <ButtonToolbar>
-                        <Button variant="primary">Participar</Button>
-                      </ButtonToolbar>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
-                  <div class="cardX" style={{ 'width': '248px' }}>
-                    <div class="hover01 columnHover">
-                      <div>
-                        <figure><img src={require('./images/capa_masterchefeprofissionais2019.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                      </div>
-                    </div>
-
-
-                    <div class="card-body">
-                      <h5>De Férias com o Ex</h5>
-                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                      <ButtonToolbar>
-                        <Button variant="primary">Participar</Button>
-                      </ButtonToolbar>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="column" style={{ 'padding-top': '4px', 'padding-left': '0px' }}>
-                  <div class="cardX" style={{ 'width': '248px' }}>
-                    <div class="hover01 columnHover">
-                      <div>
-                        <figure><img src={require('./images/capa_feriascomoex.jfif')} alt="Card image" style={{ 'width': '100%' }} /></figure>
-                      </div>
-                    </div>
-
-
-                    <div class="card-body">
-                      <h5>De Férias com o Ex</h5>
-                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                      <ButtonToolbar>
-                        <Button variant="primary">Participar</Button>
-                      </ButtonToolbar>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </center>
           </div>
         </div>
 
 
 
 
-
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
-                <img src={require('./images/teste.jpg')} width="60" height="50"/>
-                <a style={gradient3}>{this.state.board.nome}</a>
-
-
-        <dt>Descrição detalhada:</dt>
-        <dd>{this.state.board.descricao}</dd>
-
-
-        {this.state.participantes.map(participante =>
-          <tr height="50">
-            <td>
-              <button onClick={this.vote.bind(this, participante.id)} class="btn btn-warning"><b>{participante.nome}</b> ({participante.votos}) {parseFloat(participante.percentual).toFixed(2)}%</button>
-            </td>
-          </tr>
-        )}
-        <dl>
-          <dd><b>Total de Votos:</b> {this.state.totalVotos}</dd>
-        </dl>
-
-        <br />
-        <Link to="/" class="btn btn-info">Voltar</Link>&nbsp;
-
-
-
-
       </div>
-
+      
+      
 
 
     );

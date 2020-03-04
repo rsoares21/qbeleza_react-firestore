@@ -3,7 +3,7 @@ body {
   //align-items: center;
   //background: #642B73;
   //background: linear-gradient(to bottom, rgb(212, 103, 103), rgb(255, 0, 0));
-  display: flex;
+  //display: flex;
   //font-family: 'Open Sans', sans;
   //justify-content: center;
   //overflow: hidden;
@@ -90,7 +90,7 @@ body {
     }
     .wrapper {
       background-color: $white;
-      width: 510px;
+      width: 580px;
       min-height: 500px;
       position: relative;
       overflow: hidden;
@@ -117,12 +117,14 @@ body {
     }
     .author {
       font-size: 12px;
+      color:#ea5151;
     }
     .title {
       margin-top: 10px;
+      font-size: 40px;
     }
     .text {
-      height: 70px;
+      height: 30px;
       margin: 0;
     }
     input[type='checkbox'] {
@@ -133,12 +135,12 @@ body {
     }
   }
   
-  // Second example styles
+// Second example styles
 .example-2 {
     .wrapper {
       //background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
       //background: url(https://scontent.fsdu5-1.fna.fbcdn.net/v/t1.15752-9/89087868_213769936487852_4024068341248294912_n.jpg?_nc_cat=108&_nc_sid=b96e70&_nc_ohc=cheA_IFCJ7kAX-96sUv&_nc_ht=scontent.fsdu5-1.fna&oh=b669e2c3e1ee6b70d5f4f7ece204d93d&oe=5EEFAFB3) center / cover no-repeat;
-      background: url('./images/paredao6bbb20.png') no-repeat;
+      background: url('./images/quartobranco.jfif') no-repeat;
       &:hover {
         .menu-content {
           span {
@@ -247,6 +249,7 @@ body {
 $colors: (
   fill: #3c48ec,
   pulse: #956eef, 
+  
   close: #7fffa5, 
   raise: #ffa260, 
   up: #e4cb58, 
